@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package users;
 
 service Users {
@@ -12,26 +13,31 @@ service Users {
 
 message User {
     string id = 1;
-    string name = 2;
-    string email = 3;
-    string role = 4;
+    string name = 2;        // Nombre del usuario
+    string email = 3;       // Correo electrónico del usuario
+    string role = 4;        // Rol del usuario (por ejemplo, "admin", "user")
+    string createdAt = 5;   // Fecha de creación
 }
 
 message RegisterRequest {
-    User user = 1;
+    string name = 1;        // Nombre del usuario
+    string email = 2;       // Correo electrónico del usuario
+    string password = 3;    // Contraseña del usuario
+    string role = 4;        // Rol del usuario (opcional, podría ser "user" por defecto)
 }
 
 message RegisterResponse {
-    User user = 1;
+    User user = 1;          // Usuario registrado
+    string message = 2;     // Mensaje de éxito o información adicional
 }
 
 message LoginRequest {
-    string email = 1;
-    string password = 2;
+    string email = 1;       // Correo electrónico para login
+    string password = 2;    // Contraseña para login
 }
 
 message LoginResponse {
-    string token = 1;
+    string token = 1;       // Token de autenticación
 }
 
 message GetUsersRequest {}
@@ -41,7 +47,7 @@ message GetUsersResponse {
 }
 
 message GetUserByIdRequest {
-    string id = 1;
+    string id = 1;          // ID del usuario a buscar
 }
 
 message GetUserByIdResponse {
@@ -49,17 +55,17 @@ message GetUserByIdResponse {
 }
 
 message UpdateUserRequest {
-    User user = 1;
+    User user = 1;          // Datos actualizados del usuario
 }
 
 message UpdateUserResponse {
-    User user = 1;
+    User user = 1;          // Usuario actualizado
 }
 
 message DeleteUserRequest {
-    string id = 1;
+    string id = 1;          // ID del usuario a eliminar
 }
 
 message DeleteUserResponse {
-    string id = 1;
+    string id = 1;          // ID del usuario eliminado
 }
