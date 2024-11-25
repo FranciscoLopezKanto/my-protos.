@@ -40,8 +40,9 @@ message LoginResponse {
     string token = 1;       // Token de autenticación
 }
 
-message GetUsersRequest {}
-
+message GetUsersRequest {
+    string token = 1;       // Token de autenticación 
+}
 message GetUsersResponse {
     repeated User users = 1;
 }
